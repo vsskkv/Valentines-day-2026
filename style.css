@@ -1,0 +1,218 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #ffebee;
+    font-family: 'Quicksand', sans-serif;
+    overflow: hidden;
+}
+
+#container {
+    text-align: center;
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2.5rem;
+    border-radius: 30px;
+    box-shadow: 0 15px 35px rgba(255, 105, 180, 0.3);
+    max-width: 90%;
+    width: 450px;
+    transition: all 0.5s ease;
+}
+
+/* Greeting Screen Styles */
+.greeting-title {
+    font-size: 2.8rem;
+    margin-bottom: 1.5rem;
+}
+
+#start-btn {
+    background-color: #ff4081;
+    color: white;
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 15px rgba(255, 64, 129, 0.4);
+}
+
+#start-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 6px 20px rgba(255, 64, 129, 0.5);
+}
+
+/* Interactive Heart */
+.heart-container {
+    position: relative;
+    cursor: pointer;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+}
+
+.click-me {
+    position: absolute;
+    bottom: -20px;
+    font-size: 0.9rem;
+    color: #ff4081;
+    font-weight: 600;
+    opacity: 0.8;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+    40% {transform: translateY(-5px);}
+    60% {transform: translateY(-3px);}
+}
+
+h1 {
+    font-family: 'Dancing Script', cursive;
+    color: #d32f2f;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+p {
+    color: #ff4081;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    font-weight: 500;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    position: relative;
+    min-height: 80px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+button {
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    outline: none;
+}
+
+#yes-btn {
+    background-color: #ff4081;
+    color: white;
+    z-index: 2;
+}
+
+#yes-btn:hover {
+    background-color: #f50057;
+    transform: scale(1.1);
+}
+
+#no-btn {
+    background-color: #e0e0e0;
+    color: #757575;
+    z-index: 1;
+}
+
+.secondary-btn {
+    margin-top: 2rem;
+    background-color: transparent;
+    color: #ff4081;
+    border: 2px solid #ff4081;
+    padding: 8px 20px;
+    font-size: 0.9rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    #container {
+        padding: 1.5rem;
+        width: 85%;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .greeting-title {
+        font-size: 2.2rem;
+    }
+    
+    button {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Heart Animation */
+.heart {
+    background-color: #ff4081;
+    display: inline-block;
+    height: 50px;
+    margin: 0 10px;
+    position: relative;
+    top: 0;
+    transform: rotate(-45deg);
+    width: 50px;
+    animation: heartbeat 1.2s infinite;
+}
+
+.heart:before,
+.heart:after {
+    content: "";
+    background-color: #ff4081;
+    border-radius: 50%;
+    height: 50px;
+    position: absolute;
+    width: 50px;
+}
+
+.heart:before {
+    top: -25px;
+    left: 0;
+}
+
+.heart:after {
+    left: 25px;
+    top: 0;
+}
+
+@keyframes heartbeat {
+    0% { transform: rotate(-45deg) scale(1); }
+    25% { transform: rotate(-45deg) scale(1.1); }
+    50% { transform: rotate(-45deg) scale(1); }
+    75% { transform: rotate(-45deg) scale(1.2); }
+    100% { transform: rotate(-45deg) scale(1); }
+}
+
+/* Background Hearts */
+.bg-heart {
+    position: absolute;
+    color: #ff80ab;
+    opacity: 0.5;
+    pointer-events: none;
+    animation: float 5s linear infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+}
+
+.gif-container img {
+    max-width: 100%;
+    border-radius: 15px;
+    margin-top: 1rem;
+}

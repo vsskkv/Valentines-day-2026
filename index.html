@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine?</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="container">
+        <div id="greeting-screen">
+            <h1 class="greeting-title">Happy February 1st! ❤️</h1>
+            <p class="greeting-text">A new month, a new reason to tell you how much you mean to me...</p>
+            <button id="start-btn">Click to open</button>
+        </div>
+
+        <div id="main-card" class="hidden">
+            <div class="heart-container" id="interactive-heart">
+                <div class="heart"></div>
+                <div class="click-me">Click me!</div>
+            </div>
+            <h1 id="question">Will you be my Valentine?</h1>
+            <p id="message">I've been waiting to ask you...</p>
+            
+            <div class="buttons">
+                <button id="yes-btn">Yes!</button>
+                <button id="no-btn">No</button>
+            </div>
+        </div>
+
+        <div id="celebration" class="hidden">
+            <h1 class="celebration-text">Yay! I'm so happy! ❤️</h1>
+            <p class="celebration-subtext">I can't wait to spend Valentine's Day with you!</p>
+            <div class="gif-container">
+                <img src="https://media.giphy.com/media/108M7gCS1JSoO4/giphy.gif" alt="Cute Cat Love">
+            </div>
+            <button id="reset-btn" class="secondary-btn">Ask me again? 😉</button>
+        </div>
+    </div>
+
+    <div id="hearts-bg"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
