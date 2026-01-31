@@ -68,7 +68,7 @@ yesBtn.addEventListener('click', () => {
     confetti();
 });
 
-// Interactive heart click
+// Interactive heart click: pulse, spawn hearts, and show a sweet message
 interactiveHeart.addEventListener('click', () => {
     const heart = interactiveHeart.querySelector('.heart');
     heart.style.transform = 'rotate(-45deg) scale(1.5)';
@@ -76,6 +76,21 @@ interactiveHeart.addEventListener('click', () => {
         heart.style.transform = 'rotate(-45deg) scale(1)';
     }, 200);
     createHeart();
+
+    // Sweet message overlay (no GIF)
+    const overlay = document.createElement('div');
+    overlay.className = 'heart-peek-overlay';
+    overlay.innerHTML = `
+        <div class="heart-peek-content">
+            <p class="heart-peek-text">You are really loved :)</p>
+        </div>
+    `;
+    document.body.appendChild(overlay);
+    requestAnimationFrame(() => overlay.classList.add('visible'));
+    setTimeout(() => {
+        overlay.classList.remove('visible');
+        setTimeout(() => overlay.remove(), 300);
+    }, 2000);
 });
 
 // Reset for another try
@@ -105,17 +120,35 @@ function startHearts() {
 
 // Simple confetti effect
 function confetti() {
-    for (let i = 0; i < 50; i++) {
+    const colors = ['#ff4d6d', '#ff758f', '#ff8fa3', '#ffb3c1', '#ffccd5'];
+    for (let i = 0; i < 100; i++) {
         setTimeout(() => {
             const heart = document.createElement('div');
             heart.classList.add('bg-heart');
-            heart.innerHTML = ['❤️', '💖', '💝', '💕', '🌸'][Math.floor(Math.random() * 5)];
+            heart.innerHTML = ['❤️', '💖', '💝', '💕', '💗'][Math.floor(Math.random() * 5)];
             heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.top = '100vh';
+            heart.style.top = '-5vh';
             heart.style.fontSize = Math.random() * 30 + 15 + 'px';
-            heart.style.animation = `float ${Math.random() * 2 + 2}s linear forwards`;
+            
+            // Create a custom fall animation for confetti
+            const duration = Math.random() * 3 + 2;
+            const drift = (Math.random() - 0.5) * 20; // horizontal drift
+            
+            heart.animate([
+                { transform: `translateY(0) translateX(0) rotate(0deg)`, opacity: 1 },
+                { transform: `translateY(110vh) translateX(${drift}vw) rotate(${Math.random() * 360}deg)`, opacity: 0 }
+            ], {
+                duration: duration * 1000,
+                easing: 'linear',
+                fill: 'forwards'
+            });
+
             heartsBg.appendChild(heart);
-        }, i * 50);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, duration * 1000);
+        }, i * 30);
     }
 }
 
